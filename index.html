@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberForge Studio | 賽博網頁設計工作室</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #111827;
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --primary: #00f2fe;
+            --accent: #4facfe;
+            --neon-glow: linear-gradient(135deg, #00f2fe, #4facfe);
+            --border-color: #1f2937;
+            --btn-bg: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px 15px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* 🌐 語言控制核心 */
+        /* 預設是中文模式（body 沒有外加 class）時：顯示中文，隱藏英文 */
+        .lang-en { display: none !important; }
+        .lang-zh { display: block !important; }
+
+        /* 當 body 被加上 .en-mode 時：顯示英文，隱藏中文 */
+        body.en-mode .lang-en { display: block !important; }
+        body.en-mode .lang-zh { display: none !important; }
+
+        /* 🔘 頂部工具列與語言切換按鈕 */
+        .top-bar {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 15px;
+        }
+
+        .lang-btn {
+            background: var(--card-bg);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:active {
+            transform: scale(0.95);
+            background: var(--primary);
+            color: #000;
+        }
+
+        /* 🚀 公司招牌區 */
+        .hero-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
+            margin-bottom: 25px;
+            border: 1px solid var(--primary);
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            background: var(--neon-glow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .tagline {
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* 📦 核心服務卡片 */
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 25px 20px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color);
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .service-list {
+            list-style: none;
+        }
+
+        .service-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .service-item:last-child {
+            border-bottom: none;
+        }
+
+        .service-item strong {
+            color: #fff;
+            display: block;
+            font-size: 1.05rem;
+        }
+
+        .service-item span {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* 📂 精選作品展示 */
+        .work-showcase {
+            background: var(--bg-color);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .work-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .work-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        /* 🔗 點擊按鈕跳轉 */
+        .btn-link {
+            display: inline-block;
+            background: var(--neon-glow);
+            color: #000;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: 700;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+        }
+
+        /* 📞 聯絡我們 */
+        .contact-btn {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 10px;
+            font-weight: 700;
+            width: 100%;
+            font-size: 1rem;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- 🌐 頂部切換語言按鈕區 -->
+        <div class="top-bar">
+            <button class="lang-btn" id="langToggleBtn">English</button>
+        </div>
+
+        <!-- 🚀 公司總部頂部招牌 -->
+        <div class="hero-card">
+            <h1>CyberForge Studio</h1>
+            <div class="tagline lang-zh">賽博網頁設計工作室</div>
+            <div class="tagline lang-en">Cyber Web Design Agency</div>
+        </div>
+
+        <!-- 💡 我們的優勢 -->
+        <div class="card">
+            <div class="card-title lang-zh">⚡ 為什麼選擇我們？</div>
+            <div class="card-title lang-en">⚡ Why Choose Us?</div>
+            
+            <p class="lang-zh" style="color: var(--text-muted); font-size: 0.95rem;">我們專注於利用最新 AI 技術與頂級前端代碼，為中小企業量身打造具備「極高轉化率」與「流暢動態體驗」的現代網頁商業樣板。</p>
+            <p class="lang-en" style="color: var(--text-muted); font-size: 0.95rem;">We specialize in leveraging cutting-edge AI technologies and premium front-end code to craft modern business web templates with high conversion rates and seamless user experiences.</p>
+        </div>
+
+        <!-- 🛠️ 服務項目 -->
+        <div class="card">
+            <div class="card-title lang-zh">🛠️ 專業服務項目</div>
+            <div class="card-title lang-en">🛠️ Our Core Services</div>
+            
+            <ul class="service-list">
+                <li class="service-item">
+                    <span class="lang-zh"><strong>01. 商業級一頁式落地頁 (Landing Page)</strong>專為產品發佈、品牌推廣打造，極速載入，外觀酷炫。</span>
+                    <span class="lang-en"><strong>01. Business Landing Pages</strong>High-converting page layouts tailored for product launches and brand promotion with ultra-fast loading speed.</span>
+                </li>
+                <li class="service-item">
+                    <span class="lang-zh"><strong>02. 餐飲業動態點餐系統樣板</strong>具備自動化導流、WhatsApp 串接點餐功能，直接提升店舖營業額。</span>
+                    <span class="lang-en"><strong>02. Dynamic Diner Menu Templates</strong>Interactive menus integrated with WhatsApp ordering systems to directly drive sales and business growth.</span>
+                </li>
+                <li class="service-item">
+                    <span class="lang-zh"><strong>03. RWD 行動裝置極致優化</strong>100% 完美適配手機與平板，確保手機用戶獲得最絲滑的瀏覽體驗。</span>
+                    <span class="lang-en"><strong>03. Ultimate RWD Mobile Optimization</strong>100% responsive layouts ensuring a flawless and silky-smooth browsing experience on all mobile devices.</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 📂 精選案例展示（預留給接下來發佈的餐牌） -->
+        <div class="card">
+            <div class="card-title lang-zh">📂 精選案例展示</div>
+            <div class="card-title lang-en">📂 Featured Case Studies</div>
+            
+            <div class="work-showcase">
+                <div class="work-title">Retro Bite Diner Menu</div>
+                <div class="work-desc lang-zh">美式復古風動態餐牌 — 整合 WhatsApp 自動導流點餐</div>
+                <div class="work-desc lang-en">Retro Diner Menu — Integrated with WhatsApp automated ordering system</div>
+                
+                <a href="#" class="btn-link lang-zh">點擊觀看線上展示 (Live Demo)</a>
+                <a href="#" class="btn-link lang-en">View Live Demo</a>
+            </div>
+        </div>
+
+        <!-- 📞 商務合作接單 -->
+        <div class="card" style="border: 1px solid #fff;">
+            <div class="card-title lang-zh" style="color: #fff;">💼 啟動您的項目</div>
+            <div class="card-title lang-en" style="color: #fff;">💼 Start Your Project</div>
+            
+            <p class="lang-zh" style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px;">準備好讓您的品牌在網絡上脫穎而出嗎？立即聯絡我們，獲取免費的專案評估與報價！</p>
+            <p class="lang-en" style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px;">Ready to make your brand stand out online? Contact us today for a free project assessment and quotation!</p>
+            
+            <a href="https://wa.me/你的電話號碼" class="contact-btn lang-zh">💬 立即預約諮詢 (WhatsApp)</a>
+            <a href="https://wa.me/你的電話號碼" class="contact-btn lang-en">💬 Book a Free Consultation (WhatsApp)</a>
+        </div>
+
+    </div>
+
+    <!-- 🪄 語言切換的 JavaScript 魔法 -->
+    <script>
+        const btn = document.getElementById('langToggleBtn');
+        btn.addEventListener('click', () => {
+            // 切換 body 的 en-mode 狀態
+            document.body.classList.toggle('en-mode');
+            
+            // 根據目前的狀態，改變按鈕上顯示的文字
+            if (document.body.classList.contains('en-mode')) {
+                btn.textContent = '中文';
+            } else {
+                btn.textContent = 'English';
+            }
+        });
+    </script>
+</body>
+</html>
