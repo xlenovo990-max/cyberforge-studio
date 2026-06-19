@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Habitat | Home & Life</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* 1. 🎨 現代手作風基礎守則 */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        
+        /* 🐾 品牌背景：移除貓狗腳印，換上淡淡的北歐樹葉浮水印，增加質感 */
+        body { 
+            background-color: #fdfcfb; /* 燕麥色/米灰色背景，增加溫暖感 */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='45' height='45' viewBox='0 0 60 60'%3E%3Cpath d='M30 0c16.57 0 30 13.43 30 30S46.57 60 30 60 0 46.57 0 30 13.43 0 30 0zm0 10c-11.046 0-20 8.954-20 20s8.954 20 20 20 20-8.954 20-20-8.954-20-20-20z' fill='%23a9ba9d' fill-opacity='0.08'/%3E%3C/svg%3E");
+            color: #2c3e50; 
+            line-height: 1.5; 
+            -webkit-font-smoothing: antialiased; 
+        }
+
+        /* 頂部導覽列：採用更極簡的設計 */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 16px 20px; background-color: #ffffff; position: sticky; top: 0; z-index: 100;
+            border-bottom: 1px solid #eef2f5;
+        }
+        .logo { font-weight: 800; font-size: 20px; color: #a9ba9d; display: flex; align-items: center; gap: 4px; } /* 換上草本綠主色 */
+        .header-icons { font-size: 20px; }
+
+        /* 主容器：限制寬度，增加左右留白，模仿雜誌排版 */
+        .container { max-width: 650px; margin: 0 auto; padding: 20px; }
+
+        /* 2. 🛋️ 家具首頁核心：故事性 Hero Section */
+        .hero { text-align: center; padding-bottom: 30px; margin-bottom: 30px; border-bottom: 1px dashed #e2e8f0; }
+        .badge { display: inline-block; background-color: #e8f0e5; color: #7a8c71; padding: 6px 14px; border-radius: 30px; font-size: 12px; font-weight: 700; margin-bottom: 16px; text-transform: uppercase; }
+        .hero h1 { font-size: 34px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.2; color: #1a2530; margin-bottom: 12px; }
+        .hero p { font-size: 15px; color: #627d98; margin-bottom: 24px; }
+
+        /* 主打商品圖片展示框：模仿高級展示廳 */
+        .image-showcase {
+            width: 100%; background-color: #ffffff; border-radius: 32px; padding: 12px;
+            margin-bottom: 24px; display: flex; justify-content: center; align-items: center; 
+            min-height: 260px; box-shadow: 0 10px 40px rgba(0,0,0,0.03); overflow: hidden;
+            border: 1px solid #eef2f5;
+        }
+        .product-main-img-svg {
+            width: 100%; max-width: 280px; height: auto;
+        }
+
+        /* 價格與評價：改用更簡潔的呈現 */
+        .meta-box { margin-bottom: 24px; text-align: center; }
+        .rating { color: #ccb997; font-size: 14px; margin-bottom: 8px; display: block; }
+        .price-container { display: flex; justify-content: center; align-items: center; gap: 10px; }
+        .old-price { text-decoration: line-through; color: #9fb3c8; font-size: 16px; }
+        .new-price { font-size: 32px; font-weight: 800; color: #a9ba9d; }
+
+        /* 核心 CTA 按鈕：改用溫潤的草本綠 */
+        .pet-cta-btn {
+            display: block; width: 100%; background: linear-gradient(135deg, #a9ba9d, #8fa383);
+            color: #ffffff; text-align: center; padding: 18px; border-radius: 16px;
+            font-size: 18px; font-weight: 700; text-decoration: none;
+            box-shadow: 0 10px 20px rgba(169,186,157,0.3); transition: transform 0.2s;
+            margin-bottom: 24px;
+        }
+        .pet-cta-btn:active { transform: scale(0.97); }
+
+        /* 3. 🛡️ 新增：小店信任區塊（解決痛點） */
+        .trust-row { display: flex; justify-content: space-between; gap: 14px; margin-bottom: 50px; }
+        .trust-item { 
+            font-size: 11px; color: #627d98; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; 
+            flex: 1; background: #ffffff; padding: 12px; border-radius: 12px; border: 1px solid #eef2f5;
+        }
+        .trust-icon { font-size: 20px; }
+
+        /* 多件優惠組合區：改為家具適用場景（例如：沙發+茶几） */
+        .bundle-section {
+            background-color: #ffffff; border-radius: 24px; padding: 24px 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02); border: 1px solid #eef2f5; margin-bottom: 40px;
+        }
+        .bundle-title { font-size: 20px; font-weight: 800; text-align: center; margin-bottom: 20px; color: #1a2530; }
+        
+        .bundle-card {
+            border: 2px solid #e2e8f0; border-radius: 16px; padding: 16px;
+            margin-bottom: 12px; display: flex; justify-content: space-between;
+            align-items: center; cursor: pointer; position: relative; background-color: #ffffff;
+        }
+        .bundle-card.active { border-color: #a9ba9d; background-color: #f8faf7; }
+        .bundle-left { display: flex; align-items: center; gap: 12px; }
+        .radio-circle { width: 20px; height: 20px; border: 2px solid #cbd5e1; border-radius: 50%; display: flex; justify-content: center; align-items: center; background: #fff; }
+        .bundle-card.active .radio-circle { border-color: #a9ba9d; }
+        .bundle-card.active .radio-circle::after { content: ''; width: 10px; height: 10px; background-color: #a9ba9d; border-radius: 50%; }
+        .bundle-info .qty { font-weight: 700; font-size: 16px; color: #1a2530; }
+        .bundle-info .tagline { font-size: 12px; color: #7a8c71; font-weight: 600; }
+        .bundle-right { text-align: right; }
+        .bundle-price { font-weight: 800; font-size: 18px; color: #1a2530; }
+        .pop-badge { position: absolute; top: -12px; right: 20px; background-color: #a9ba9d; color: white; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 10px; }
+
+        /* 🛍️ 家具系列多產品展示區：改為高級網格 */
+        .collection-section { padding: 10px 0; }
+        .section-title { font-size: 22px; font-weight: 800; text-align: center; margin-bottom: 24px; color: #1a2530; }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 14px;
+        }
+        
+        .grid-item { display: flex; flex-direction: column; background: #ffffff; border: 1px solid #eef2f5; border-radius: 20px; padding: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.01); }
+        
+        .grid-img-holder {
+            width: 100%; background-color: #fdfcfb; aspect-ratio: 1 / 1; display: flex; justify-content: center; align-items: center; padding: 8px; margin-bottom: 10px; border-radius: 16px;
+        }
+        .grid-img-holder svg { width: 100%; height: 100%; max-height: 100px; }
+        
+        .grid-item-tag { font-size: 10px; font-weight: 700; color: #a9ba9d; margin-bottom: 2px; text-transform: uppercase; }
+        .grid-item-title { font-size: 14px; font-weight: 700; color: #1a2530; margin-bottom: 4px; line-height: 1.3; }
+        .grid-item-desc { font-size: 11px; color: #627d98; line-height: 1.4; margin-bottom: 8px; flex-grow: 1; }
+        .grid-item-price { font-size: 14px; font-weight: 800; color: #a9ba9d; margin-bottom: 10px; }
+        
+        .grid-item-btn {
+            display: block; width: 100%; border: 1px solid #a9ba9d; color: #a9ba9d; background-color: transparent; text-align: center; padding: 8px; font-size: 11px; text-transform: uppercase; border-radius: 8px; font-weight: 700; text-decoration: none; transition: all 0.2s;
+        }
+        .grid-item-btn:active { background-color: #a9ba9d; color: #ffffff; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">MH | Modern Habitat</div>
+        <div class="header-icons"><span>🪑🛒</span></div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <span class="badge">🪑 Modern Collection</span>
+            <h1>Crafted Comfort For Your Home</h1>
+            <p>Discover handcrafted pieces that balance modern design with artisan skill. Elevate your living space.</p>
+
+            <div class="image-showcase">
+                <svg class="product-main-img-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="sofaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#a9ba9d;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#7a8c71;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M20 100 Q50 90 80 100 L80 130 Q50 140 20 130 Z" fill="#d1d5db" opacity="0.4"/>
+                    <path d="M120 100 Q150 90 180 100 L180 130 Q150 140 120 130 Z" fill="#d1d5db" opacity="0.4"/>
+                    <path d="M30 110 L170 110 L160 160 L40 160 Z" fill="url(#sofaGrad)" />
+                    <rect x="50" y="80" width="100" height="40" rx="8" fill="#ffffff" opacity="0.5"/>
+                </svg>
+            </div>
+
+            <div class="meta-box">
+                <span class="rating">⭐⭐⭐⭐⭐ <span>(4.8/5.0)</span></span>
+                <div class="price-container">
+                    <span class="old-price">$799</span>
+                    <span class="new-price">$499</span>
+                </div>
+            </div>
+
+            <a href="#" class="pet-cta-btn">EXPLORE THE COLLECTION</a>
+
+            <div class="trust-row">
+                <div class="trust-item"><span class="trust-icon">🚚</span>Free Shipping</div>
+                <div class="trust-item"><span class="trust-icon">🛡️</span>Artisan Quality</div>
+                <div class="trust-item"><span class="trust-icon">🛋️</span>Home Trial</div>
+            </div>
+        </section>
+
+        <section class="bundle-section">
+            <h2 class="bundle-title">Elevate Your Living Room & Save</h2>
+            <div class="bundle-card" onclick="selectBundle(this)">
+                <div class="bundle-left"><div class="radio-circle"></div><div class="bundle-info"><div class="qty">1x Modern Sofa</div><div class="tagline">Standard Piece</div></div></div>
+                <div class="bundle-right"><div class="bundle-price">$499</div></div>
+            </div>
+            <div class="bundle-card active" onclick="selectBundle(this)">
+                <span class="pop-badge">BEST VALUE (SAVE 20%)</span>
+                <div class="bundle-left"><div class="radio-circle"></div><div class="bundle-info"><div class="qty">Sofa + Coffee Table</div><div class="tagline">Complete Living Set</div></div></div>
+                <div class="bundle-right"><div class="bundle-price">$599</div></div>
+            </div>
+        </section>
+
+        <section class="collection-section">
+            <h2 class="section-title">Shop Our Curation</h2>
+            
+            <div class="grid-container">
+                <div class="grid-item">
+                    <div class="grid-img-holder">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="20" y="30" width="60" height="40" fill="#a9ba9d" opacity="0.8"/>
+                            <rect x="25" y="70" width="10" height="20" fill="#e2e8f0"/>
+                            <rect x="65" y="70" width="10" height="20" fill="#e2e8f0"/>
+                        </svg>
+                    </div>
+                    <span class="grid-item-tag">Dining</span>
+                    <h3 class="grid-item-title">Artisan Dining Table</h3>
+                    <p class="grid-item-desc">Solid wood, clean lines, and a warm natural finish.</p>
+                    <span class="grid-item-price">$299</span>
+                    <a href="#" class="grid-item-btn">View Details</a>
+                </div>
+
+                <div class="grid-item">
+                    <div class="grid-img-holder">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="20" y="20" width="60" height="60" fill="#ffffff" stroke="#eef2f5"/>
+                            <rect x="30" y="30" width="15" height="15" fill="#a9ba9d"/>
+                            <rect x="55" y="55" width="15" height="15" fill="#e2e8f0"/>
+                        </svg>
+                    </div>
+                    <span class="grid-item-tag">Storage</span>
+                    <h3 class="grid-item-title">Minimal Sideboard</h3>
+                    <p class="grid-item-desc">Keep clutter at bay with this elegant, Scandinavian-inspired sideboard.</p>
+                    <span class="grid-item-price">$199</span>
+                    <a href="#" class="grid-item-btn">View Details</a>
+                </div>
+
+                <div class="grid-item">
+                    <div class="grid-img-holder">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="30" fill="#ccb997" opacity="0.3"/>
+                            <path d="M30 60 Q50 50 70 60 L60 80 L40 80 Z" fill="#ccb997"/>
+                        </svg>
+                    </div>
+                    <span class="grid-item-tag">Lounge</span>
+                    <h3 class="grid-item-title">Comfy Lounge Chair</h3>
+                    <p class="grid-item-desc">Soft bouclé fabric and a shape that cradles you in comfort.</p>
+                    <span class="grid-item-price">$149</span>
+                    <a href="#" class="grid-item-btn">View Details</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function selectBundle(element) {
+            const cards = document.querySelectorAll('.bundle-card');
+            cards.forEach(card => card.classList.remove('active'));
+            element.classList.add('active');
+        }
+    </script>
+</body>
+</html>
