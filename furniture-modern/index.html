@@ -3,62 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Studio Nordic | Modern Living</title>
+    <title>Studio Nordic | Mid-Century Modern Living</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
-        body { background-color: #f8fafc; color: #1e293b; font-family: sans-serif; margin: 0; padding: 20px; padding-top: 80px; }
+        :root {
+            --primary: #0f172a;
+            --text-muted: #64748b;
+            --bg-neutral: #f8fafc;
+            --border-color: #e2e8f0;
+        }
+        body { background-color: var(--bg-neutral); color: #1e293b; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 20px; padding-top: 80px; }
         
-        /* 導覽列 */
-        .navbar { position: fixed; top: 0; left: 0; right: 0; background: #ffffff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e2e8f0; z-index: 100; }
-        .brand { font-weight: bold; color: #0f172a; font-size: 20px; letter-spacing: 1px; }
-        .cart-status { background: #f1f5f9; padding: 8px 15px; border-radius: 20px; font-size: 14px; font-weight: 500; color: #334155; }
-        .cart-count { color: #0f172a; font-weight: bold; margin-left: 5px; }
+        /* 導覽列優化：更精緻的邊框與字體 */
+        .navbar { position: fixed; top: 0; left: 0; right: 0; background: #ffffff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); z-index: 100; }
+        .brand { font-weight: 700; color: var(--primary); font-size: 18px; letter-spacing: 1.5px; }
+        .cart-status { background: #f1f5f9; padding: 8px 16px; border-radius: 30px; font-size: 13px; font-weight: 600; color: #334155; display: flex; align-items: center; gap: 6px; }
+        .cart-count { color: var(--primary); font-weight: 700; }
 
-        .hero { text-align: center; padding: 20px 0; }
-        .hero h1 { font-size: 30px; color: #0f172a; margin-bottom: 5px; font-weight: 600; }
+        .hero { text-align: center; padding: 30px 0 10px 0; }
+        .hero h1 { font-size: 28px; color: var(--primary); margin: 0 0 8px 0; font-weight: 700; letter-spacing: -0.5px; }
+        .hero p { color: var(--text-muted); margin: 0; font-size: 14px; line-height: 1.5; }
         
-        .product-card { background: #ffffff; border-radius: 16px; padding: 20px; margin-bottom: 20px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-        .specs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; font-size: 14px; }
-        .spec-item { background: #f8fafc; padding: 10px; border-radius: 8px; text-align: center; color: #64748b; border: 1px solid #f1f5f9; }
+        /* 商品卡片：加入真實高質感家具圖 */
+        .product-card { background: #ffffff; border-radius: 16px; padding: 20px; margin-bottom: 20px; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03); }
+        .image-container { width: 100%; height: 220px; border-radius: 10px; overflow: hidden; margin-bottom: 20px; background: #e2e8f0; }
+        .image-container img { width: 100%; height: 100%; object-fit: cover; }
+        .product-title { font-size: 22px; color: var(--primary); margin: 0 0 8px 0; font-weight: 600; }
+        .product-desc { color: var(--text-muted); font-size: 14px; line-height: 1.6; margin: 0 0 20px 0; }
         
-        .cta-btn { background: #0f172a; color: #ffffff; padding: 15px; border-radius: 12px; text-align: center; font-weight: bold; display: block; text-decoration: none; border: none; width: 100%; font-size: 16px; cursor: pointer; transition: background 0.2s; }
+        /* 特色標籤：換上專業 Icon */
+        .specs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 10px; font-size: 13px; }
+        .spec-item { background: #f8fafc; padding: 12px; border-radius: 10px; text-align: center; color: #475569; border: 1px solid #f1f5f9; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 500; }
+        
+        .cta-btn { background: var(--primary); color: #ffffff; padding: 16px; border-radius: 12px; text-align: center; font-weight: 600; display: block; border: none; width: 100%; font-size: 16px; cursor: pointer; transition: background 0.2s; margin-top: 15px; }
         .cta-btn:active { background: #334155; }
 
-        /* 溫潤風彈出視窗 */
+        /* 👑 新增區塊一：真實商用 FAQ 常見問題 */
+        .section-title { font-size: 18px; color: var(--primary); font-weight: 700; margin: 30px 0 15px 0; display: flex; align-items: center; gap: 8px; }
+        .faq-box { background: #ffffff; border-radius: 12px; border: 1px solid var(--border-color); padding: 15px; margin-bottom: 12px; }
+        .faq-q { font-weight: 600; font-size: 14px; color: var(--primary); margin-bottom: 6px; }
+        .faq-a { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+        /* 👑 新增區塊二：顧客真實評價 */
+        .review-card { background: #ffffff; border-radius: 12px; border: 1px solid var(--border-color); padding: 15px; margin-bottom: 25px; }
+        .stars { color: #f59e0b; font-size: 12px; margin-bottom: 6px; }
+        .review-text { font-size: 13px; color: #334155; italic; line-height: 1.5; margin-bottom: 8px; font-style: italic; }
+        .reviewer { font-size: 12px; color: var(--text-muted); font-weight: 600; }
+
+        /* 👑 新增區塊三：專屬個人手作防偽 Footer */
+        .footer { text-align: center; padding: 40px 0 20px 0; border-top: 1px solid var(--border-color); margin-top: 40px; }
+        .footer-text { font-size: 12px; color: var(--text-muted); line-height: 1.8; }
+        .badge { display: inline-flex; align-items: center; gap: 5px; background: #e2e8f0; color: #334155; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; margin-top: 8px; }
+
+        /* 彈出視窗 */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15,23,42,0.6); justify-content: center; align-items: center; z-index: 200; backdrop-filter: blur(4px); }
-        .modal-content { background: #ffffff; padding: 30px; border-radius: 20px; text-align: center; max-width: 300px; border: 1px solid #e2e8f0; }
-        .modal-content h3 { color: #0f172a; margin-top: 0; font-size: 20px; }
-        .close-btn { background: #f1f5f9; color: #334155; border: none; padding: 10px 20px; border-radius: 8px; margin-top: 15px; cursor: pointer; font-weight: bold; }
+        .modal-content { background: #ffffff; padding: 30px; border-radius: 20px; text-align: center; max-width: 280px; border: 1px solid var(--border-color); }
+        .modal-content h3 { color: var(--primary); margin-top: 0; font-size: 18px; font-weight: 700; }
+        .close-btn { background: #f1f5f9; color: #334155; border: none; padding: 12px 24px; border-radius: 8px; margin-top: 15px; cursor: pointer; font-weight: 600; font-size: 14px; width: 100%; }
     </style>
 </head>
 <body>
 
     <div class="navbar">
         <div class="brand">STUDIO NORDIC</div>
-        <div class="cart-status">🛒 Cart:<span id="cartCount" class="cart-count">0</span></div>
-    </div>
-
-    <div class="hero">
-        <h1>Minimalist Comfort</h1>
-        <p style="color: #64748b; margin: 0; font-size: 14px;">Crafted for modern, mindful spaces.</p>
-    </div>
-    
-    <div class="product-card">
-        <div style="height: 180px; background: #f1f5f9; border-radius: 12px; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; color: #94a3b8; font-weight: 500;">🪑 [ OAK CHAIR IMAGE ]</div>
-        <h2>The Nordic Lounge Chair</h2>
-        <p style="color: #62748b; font-size: 14px; line-height: 1.6; margin-bottom: 15px;">Premium solid oak blended with breathable organic linen cushions for ultimate relaxation.</p>
-        
-        <div class="specs">
-            <div class="spec-item">🪵 Solid Oak Wood</div>
-            <div class="spec-item">🌱 Organic Linen</div>
+        <div class="cart-status">
+            <i class="bi bi-cart3"></i> Cart: <span id="cartCount" class="cart-count">0</span>
         </div>
     </div>
 
-    <button id="buyBtn" class="cta-btn">ADD TO CART - $249</button>
+    <div class="hero">
+        <h1>Simplicity Redeemed</h1>
+        <p>Honest materials, shaped for conscious modern living.</p>
+    </div>
+    
+    <div class="product-card">
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?q=80&w=600&auto=format&fit=crop" alt="Nordic Lounge Chair">
+        </div>
+        <h2 class="product-title">The Nordic Lounge Chair</h2>
+        <p class="product-desc">Crafted from sustainably sourced solid oak and upholstered in breathable, unbleached organic linen. Designed to age beautifully across generations.</p>
+        
+        <div class="specs">
+            <div class="spec-item"><i class="bi bi-tree"></i> Solid Oak Wood</div>
+            <div class="spec-item"><i class="bi bi-flower1"></i> Organic Linen</div>
+        </div>
+    </div>
+
+    <button id="buyBtn" class="cta-btn">Add to Cart — $249</button>
+
+    <div class="section-title"><i class="bi bi-info-circle"></i> Product Details & Shipping</div>
+    <div class="faq-box">
+        <div class="faq-q">Is the assembly difficult?</div>
+        <div class="faq-a">No assembly required. The chair is delivered fully constructed by our local craftsmen.</div>
+    </div>
+    <div class="faq-box">
+        <div class="faq-q">What is your shipping policy?</div>
+        <div class="faq-a">We offer complimentary worldwide shipping. Orders are packed securely in eco-friendly crates and delivered within 7-14 business days.</div>
+    </div>
+
+    <div class="section-title"><i class="bi bi-chat-square-quote"></i> Customer Review</div>
+    <div class="review-card">
+        <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+        <div class="review-text">"The texture of the unbleached linen is incredible. It fits perfectly into my minimalist apartment. You can truly feel the weight of solid craftsmanship."</div>
+        <div class="reviewer">— Eleanor K., Copenhagen</div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-text">
+            © 2026 CyberForge Studio. All rights reserved.<br>
+            <span class="badge"><i class="bi bi-phone"></i> Handcrafted entirely on Mobile</span>
+        </div>
+    </div>
 
     <div id="successModal" class="modal">
         <div class="modal-content">
-            <h3>✨ Added to Cart</h3>
-            <p id="modalMessage" style="color: #64748b; font-size: 14px; line-height: 1.5;"></p>
+            <h3><i class="bi bi-check-circle-fill" style="color: #10b981;"></i> Added to Cart</h3>
+            <p id="modalMessage" style="color: var(--text-muted); font-size: 13px; line-height: 1.5; margin: 10px 0;"></p>
             <button id="closeModal" class="close-btn">Continue Browsing</button>
         </div>
     </div>
@@ -74,7 +134,7 @@
         buyBtn.addEventListener('click', () => {
             count++;
             cartCount.innerText = count;
-            modalMessage.innerText = `Success! 1x "Nordic Lounge Chair" has been added. You have ${count} item(s) in your cart.`;
+            modalMessage.innerText = `Success! 1x "Nordic Lounge Chair" has been added to your cart. Total items: ${count}.`;
             modal.style.display = 'flex';
         });
 
