@@ -3,111 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paws & Claws | Premium Eco-Friendly Pet Toys</title>
+    <title>Paws & Claws | Premium Eco-Pet Boutique</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         :root {
-            --brand-primary: #d97706; /* 溫暖的琥珀橘 */
-            --brand-bg: #fdf8f2;      /* 柔和的寵物友善米白 */
-            --text-main: #451a03;     /* 深木色文字，比純黑更溫馨 */
-            --text-muted: #78350f;
-            --border-color: #fcd34d;
+            --brand-primary: #4a6154;   /* 高級和風暗綠 */
+            --brand-accent: #cda275;    /* 溫潤亞麻金 */
+            --brand-bg: #f6f5f1;        /* 輕柔燕麥白 */
+            --card-bg: #ffffff;         /* 純淨象牙白 */
+            --text-main: #1e2b24;       /* 深苔綠黑 */
+            --text-muted: #68776f;      /* 柔霧綠灰 */
+            --shadow-soft: 0 12px 32px rgba(74, 97, 84, 0.05);
         }
-        body { background-color: var(--brand-bg); color: var(--text-main); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 20px; padding-top: 80px; }
         
-        /* 導覽列：精緻寵物店風格 */
-        .navbar { position: fixed; top: 0; left: 0; right: 0; background: #ffffff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #fef3c7; z-index: 100; }
-        .brand { font-weight: 800; color: var(--brand-primary); font-size: 20px; display: flex; align-items: center; gap: 8px; letter-spacing: 0.5px; }
-        .cart-status { background: #fef3c7; padding: 8px 16px; border-radius: 30px; font-size: 13px; font-weight: 700; color: var(--brand-primary); display: flex; align-items: center; gap: 6px; }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
+        
+        body { 
+            background-color: var(--brand-bg); 
+            /* 🐾 核心升級：高級寵物店專屬的「滿版無限平鋪爪印背景」 */
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 100 100'><path fill='%234a6154' fill-opacity='0.07' d='M50,45 C57,45 62,51 62,58 C62,65 57,70 50,70 C43,70 38,65 38,58 C38,51 43,45 50,45 Z M28,38 C32,38 35,42 35,47 C35,52 32,56 28,56 C24,56 21,52 21,47 C21,42 24,38 28,38 Z M40,24 C44,24 47,28 47,33 C47,38 44,42 40,42 C36,42 33,38 33,33 C33,28 36,24 40,24 Z M60,24 C64,24 67,28 67,33 C67,38 64,42 60,42 C56,42 53,38 53,33 C53,28 56,24 60,24 Z M72,38 C76,38 79,42 79,47 C79,52 76,56 72,56 C68,56 65,52 65,47 C65,42 68,38 72,38 Z'/></svg>");
+            background-repeat: repeat; /* 讓爪印在水平和垂直方向無限延伸 */
+            color: var(--text-main); 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            padding: 20px; 
+            padding-top: 90px; 
+            line-height: 1.6; 
+            overflow-x: hidden; /* 防止任何不必要的橫向滾動 */
+        }
+        
+        /* Premium Soft Navbar */
+        .navbar { position: fixed; top: 12px; left: 12px; right: 12px; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 14px 20px; display: flex; justify-content: space-between; align-items: center; border-radius: 30px; box-shadow: var(--shadow-soft); z-index: 100; }
+        .brand { font-weight: 700; color: var(--brand-primary); font-size: 16px; display: flex; align-items: center; gap: 8px; letter-spacing: 1.5px; }
+        .cart-status { background: var(--brand-primary); padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; color: #ffffff; display: flex; align-items: center; gap: 8px; text-decoration: none; border: none; cursor: pointer; transition: opacity 0.2s; }
+        .cart-status:active { opacity: 0.9; }
+        .cart-count { background: rgba(255,255,255,0.2); padding: 2px 8px; border-radius: 10px; font-size: 11px; }
 
-        .hero { text-align: center; padding: 25px 0 10px 0; }
-        .hero h1 { font-size: 26px; color: var(--brand-primary); margin: 0 0 8px 0; font-weight: 800; }
-        .hero p { color: var(--text-muted); margin: 0; font-size: 14px; line-height: 1.5; font-weight: 500; }
+        /* Minimalist Japandi Hero */
+        .hero { text-align: center; padding: 30px 0 20px 0; max-width: 500px; margin: 0 auto; }
+        .hero h1 { font-size: 28px; color: var(--brand-primary); margin-bottom: 10px; font-weight: 700; letter-spacing: -0.5px; }
+        .hero p { color: var(--text-muted); margin: 0; font-size: 14px; font-weight: 400; }
         
-        /* 商品卡片優化 */
-        .product-card { background: #ffffff; border-radius: 20px; padding: 20px; margin-bottom: 20px; border: 2px solid #fef3c7; box-shadow: 0 6px 16px rgba(217, 119, 6, 0.04); }
-        .image-container { width: 100%; height: 220px; border-radius: 14px; overflow: hidden; margin-bottom: 20px; background: #fef3c7; }
-        .image-container img { width: 100%; height: 100%; object-fit: cover; }
-        .product-title { font-size: 22px; color: var(--text-main); margin: 0 0 8px 0; font-weight: 700; }
-        .product-desc { color: var(--text-muted); font-size: 14px; line-height: 1.6; margin: 0 0 20px 0; }
+        /* Premium Catalog Container */
+        .catalog { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px; }
+
+        /* Rounded Organic Product Card */
+        .product-card { background: var(--card-bg); border-radius: 24px; padding: 20px; border: none; box-shadow: var(--shadow-soft); display: flex; flex-direction: column; }
+        .image-container { width: 100%; height: 240px; border-radius: 16px; overflow: hidden; margin-bottom: 20px; background: #eef1ef; }
+        .image-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         
-        /* 特色標籤：改用 bi-shield-check 和 bi-heart-fill 專業向量圖標 */
-        .specs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 10px; font-size: 13px; }
-        .spec-item { background: #fffbeb; padding: 12px; border-radius: 12px; text-align: center; color: var(--brand-primary); border: 1px solid #fde68a; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600; }
+        .product-title { font-size: 20px; color: var(--text-main); margin-bottom: 8px; font-weight: 700; }
+        .product-desc { color: var(--text-muted); font-size: 13.5px; line-height: 1.6; margin-bottom: 20px; }
         
-        .cta-btn { background: var(--brand-primary); color: #ffffff; padding: 16px; border-radius: 14px; text-align: center; font-weight: 700; display: block; border: none; width: 100%; font-size: 16px; cursor: pointer; transition: transform 0.1s; margin-top: 15px; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.2); }
+        /* Organic Spec Badges */
+        .specs { display: flex; gap: 10px; margin-bottom: 20px; }
+        .spec-item { background: #f0f4f2; padding: 8px 14px; border-radius: 30px; color: var(--brand-primary); display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; }
+        .spec-item i { color: var(--brand-accent); }
+        
+        /* Rounded Action Button */
+        .cta-btn { background: var(--brand-primary); color: #ffffff; padding: 15px; border-radius: 40px; text-align: center; font-weight: 600; display: block; border: none; width: 100%; font-size: 15px; cursor: pointer; transition: transform 0.2s, background-color 0.2s; letter-spacing: 0.5px; }
         .cta-btn:active { transform: scale(0.98); }
 
-        /* 商用區塊一：寵物安全與配送 FAQ */
-        .section-title { font-size: 18px; color: var(--text-main); font-weight: 800; margin: 35px 0 15px 0; display: flex; align-items: center; gap: 8px; }
-        .faq-box { background: #ffffff; border-radius: 14px; border: 1px solid #fde68a; padding: 15px; margin-bottom: 12px; }
-        .faq-q { font-weight: 700; font-size: 14px; color: var(--text-main); margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
-        .faq-a { font-size: 13px; color: var(--text-muted); line-height: 1.5; padding-left: 20px; }
+        /* Elegant Minimal Accordion / FAQ */
+        .details-wrapper { max-width: 500px; margin: 50px auto 20px auto; }
+        .section-title { font-size: 15px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--brand-primary); font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+        .faq-box { background: var(--card-bg); border-radius: 16px; padding: 18px; margin-bottom: 12px; box-shadow: var(--shadow-soft); }
+        .faq-q { font-weight: 700; font-size: 13.5px; color: var(--text-main); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+        .faq-q i { color: var(--brand-accent); }
+        .faq-a { font-size: 13px; color: var(--text-muted); line-height: 1.6; padding-left: 20px; }
 
-        /* 商用區塊二：超萌毛孩顧客好評 */
-        .review-card { background: #ffffff; border-radius: 14px; border: 1px solid #fde68a; padding: 15px; margin-bottom: 25px; }
-        .stars { color: #fbbf24; font-size: 12px; margin-bottom: 6px; }
-        .review-text { font-size: 13px; color: var(--text-main); line-height: 1.5; margin-bottom: 8px; font-style: italic; }
-        .reviewer { font-size: 12px; color: var(--text-muted); font-weight: 700; display: flex; align-items: center; gap: 4px; }
+        /* Premium Review Block */
+        .review-wrapper { max-width: 500px; margin: 40px auto; }
+        .review-card { background: var(--card-bg); border-radius: 16px; padding: 20px; box-shadow: var(--shadow-soft); text-align: center; }
+        .stars { color: var(--brand-accent); font-size: 11px; margin-bottom: 10px; letter-spacing: 2px; }
+        .review-text { font-size: 13.5px; color: var(--text-main); line-height: 1.7; margin-bottom: 12px; font-style: italic; }
+        .reviewer { font-size: 12px; color: var(--text-muted); font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
+        .reviewer i { color: var(--brand-primary); }
 
-        /* 專屬純手機手作防偽 Footer */
-        .footer { text-align: center; padding: 40px 0 20px 0; border-top: 2px dashed #fde68a; margin-top: 40px; }
-        .footer-text { font-size: 12px; color: var(--text-muted); line-height: 1.8; font-weight: 500; }
-        .badge { display: inline-flex; align-items: center; gap: 5px; background: #fef3c7; color: var(--brand-primary); padding: 5px 12px; border-radius: 30px; font-size: 11px; font-weight: 700; margin-top: 8px; border: 1px solid #fde68a; }
+        /* Guaranteed Mobile-Crafted Footer */
+        .footer { text-align: center; padding: 50px 0 30px 0; border-top: 1px dashed rgba(74, 97, 84, 0.15); margin-top: 60px; }
+        .footer-text { font-size: 11px; color: var(--text-muted); letter-spacing: 0.5px; }
+        .badge { display: inline-flex; align-items: center; gap: 6px; background: var(--card-bg); color: var(--brand-primary); padding: 6px 14px; border-radius: 30px; font-size: 11px; font-weight: 600; margin-top: 12px; box-shadow: var(--shadow-soft); border: 1px solid rgba(74, 97, 84, 0.05); }
 
-        /* 彈出視窗 */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(69, 26, 3, 0.4); justify-content: center; align-items: center; z-index: 200; backdrop-filter: blur(4px); }
-        .modal-content { background: #ffffff; padding: 30px; border-radius: 24px; text-align: center; max-width: 280px; border: 2px solid #fde68a; }
-        .modal-content h3 { color: var(--brand-primary); margin-top: 0; font-size: 19px; font-weight: 800; }
-        .close-btn { background: #fffbeb; color: var(--brand-primary); border: 1px solid #fde68a; padding: 12px 24px; border-radius: 10px; margin-top: 15px; cursor: pointer; font-weight: 700; font-size: 14px; width: 100%; }
+        /* Cinematic Drop-Down Notification Drawer Menu */
+        .modal-drawer { position: fixed; top: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-bottom-left-radius: 24px; border-bottom-right-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.06); padding: 30px 24px; transform: translateY(-100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 200; max-height: 85vh; overflow-y: auto; }
+        .modal-drawer.active { transform: translateY(0); }
+        
+        .drawer-backdrop { position: fixed; top: 0; bottom: 0; left: 0; right: 0; background: rgba(30, 43, 36, 0.2); opacity: 0; pointer-events: none; transition: opacity 0.3s ease; z-index: 190; backdrop-filter: blur(2px); }
+        .drawer-backdrop.active { opacity: 1; pointer-events: auto; }
+        
+        .drawer-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #eef1ef; }
+        .drawer-header h3 { font-size: 16px; font-weight: 700; letter-spacing: 0.5px; }
+        
+        .cart-list { display: flex; flex-direction: column; gap: 12px; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; font-size: 13.5px; padding: 6px 0; }
+        .checkout-box { margin-top: 20px; padding-top: 16px; border-top: 1px solid #eef1ef; text-align: right; }
+        .close-drawer-btn { background: #f0f4f2; border: none; padding: 10px 20px; border-radius: 30px; font-size: 13px; font-weight: 600; color: var(--brand-primary); cursor: pointer; width: 100%; margin-top: 15px; }
     </style>
 </head>
 <body>
 
+    <!-- Responsive Luxury Navbar Header -->
     <div class="navbar">
         <div class="brand"><i class="bi bi-paw-fill"></i> PAWS & CLAWS</div>
-        <div class="cart-status">
-            <i class="bi bi-bag-heart"></i> Paws: <span id="cartCount" class="cart-count">0</span>
-        </div>
+        <button class="cart-status" onclick="toggleCartDrawer(true)">
+            <i class="bi bi-bag-heart-fill"></i> Bag <span id="cartCount" class="cart-count">0</span>
+        </button>
     </div>
 
+    <!-- Minimalist Japandi Hero Intro -->
     <div class="hero">
         <h1>Joy in Every Bite</h1>
-        <p>100% non-toxic, vet-approved play treasures for your best friend.</p>
+        <p>100% non-toxic, vet-approved play treasures for your companion.</p>
     </div>
     
-    <div class="product-card">
-        <div class="image-container">
-            <img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?q=80&w=600&auto=format&fit=crop" alt="Happy Dog with Toy">
-        </div>
-        <h2 class="product-title">The Forever Fetch Chew Toy</h2>
-        <p class="product-desc">Made from wild, sustainably harvested organic Hevea rubber. Engineered with erratic bounce technology to keep your dog mentally stimulated and physically active for hours.</p>
+    <!-- Premium Curated Catalog Selection -->
+    <div class="catalog">
         
-        <div class="specs">
-            <div class="spec-item"><i class="bi bi-shield-check"></i> 100% Eco-Rubber</div>
-            <div class="spec-item"><i class="bi bi-heart-fill"></i> Vet-Approved</div>
+        <!-- Product 1: The Chew Toy -->
+        <div class="product-card">
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?q=80&w=600&auto=format&fit=crop" alt="Happy Dog with Toy">
+            </div>
+            <h2 class="product-title">The Forever Fetch Chew Toy</h2>
+            <p class="product-desc">Made from wild, sustainably harvested organic Hevea rubber. Engineered with erratic bounce mechanics to keep your dog mentally simulated and physically active during active hours.</p>
+            <div class="specs">
+                <div class="spec-item"><i class="bi bi-shield-check"></i> 100% Eco-Rubber</div>
+                <div class="spec-item"><i class="bi bi-heart-fill"></i> Vet-Approved</div>
+            </div>
+            <button class="cta-btn" onclick="addToBoutiqueCart('Forever Fetch Chew Toy', 19)">Paw It Now — $19</button>
+        </div>
+
+        <!-- Product 2: Numi Pet Nest -->
+        <div class="product-card">
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1545249390-6bdfa286032f?q=80&w=600&auto=format&fit=crop" alt="Minimalist Cat Nest">
+            </div>
+            <h2 class="product-title">The Numi Architectural Nest</h2>
+            <p class="product-desc">An elegant sanctuary constructed from molded premium birch wood and lined with thermo-regulating organic felted wool. Designed to blend seamlessly into modern architectural spaces.</p>
+            <div class="specs">
+                <div class="spec-item"><i class="bi bi-house-heart"></i> Premium Birch</div>
+                <div class="spec-item"><i class="bi bi-thermometer-half"></i> Thermal Wool</div>
+            </div>
+            <button class="cta-btn" onclick="addToBoutiqueCart('Numi Architectural Nest', 65)">Paw It Now — $65</button>
+        </div>
+
+    </div>
+
+    <!-- Professional Heavy Chewer Safety FAQ Details -->
+    <div class="details-wrapper">
+        <div class="section-title">Heavy Chewer Safety & Shipping</div>
+        <div class="faq-box">
+            <div class="faq-q"><i class="bi bi-patch-check-fill"></i> Is it safe for aggressive chewers?</div>
+            <div class="faq-a">Yes. Our organic Hevea rubber is structural-grade and tear-resistant, engineered specifically to withstand rigorous play while remaining perfectly gentle on sensitive teeth.</div>
+        </div>
+        <div class="faq-box">
+            <div class="faq-q"><i class="bi bi-patch-check-fill"></i> What if my pet accidentally swallows a component?</div>
+            <div class="faq-a">Our boutique materials are 100% natural, chemical-free, and bio-degradable. However, we always recommend supervising play hours and replacing highly worn items.</div>
         </div>
     </div>
 
-    <button id="buyBtn" class="cta-btn">Paw It Now — $19</button>
-
-    <div class="section-title"><i class="bi bi-patch-question"></i> Heavy Chewer FAQ</div>
-    <div class="faq-box">
-        <div class="faq-q"><i class="bi bi-check-circle"></i> Is it safe for aggressive chewers?</div>
-        <div class="faq-a">Yes! Our organic Hevea rubber is structural-grade and tear-resistant, designed specifically to withstand heavy chewing while remaining gentle on teeth.</div>
-    </div>
-    <div class="faq-box">
-        <div class="faq-q"><i class="bi bi-check-circle"></i> What if my dog accidentally swallows a piece?</div>
-        <div class="faq-a">Our material is 100% natural, chemical-free, and completely biodegradable. However, we always recommend supervising play and replacing worn toys.</div>
+    <!-- Authentic Heartwarming Tail Review -->
+    <div class="review-wrapper">
+        <div class="review-card">
+            <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+            <div class="review-text">"Biscuit usually destroys toys within minutes, but this eco-rubber item has survived weeks without a single scratch! Plus, the natural aesthetic fits beautifully into our space."</div>
+            <div class="reviewer"><i class="bi bi-stars"></i> Sarah & Biscuit (Golden Retriever)</div>
+        </div>
     </div>
 
-    <div class="section-title"><i class="bi bi-stars"></i> Happy Tails</div>
-    <div class="review-card">
-        <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-        <div class="review-text">"Biscuit usually destroys toys in ten minutes, but this rubber toy has survived two weeks without a single scratch! Plus, the bounce keeps him guessing."</div>
-        <div class="reviewer"><i class="bi bi-person-heart"></i> Sarah & Biscuit (Golden Retriever)</div>
-    </div>
-
+    <!-- Mobile Creator Verification Protected Footer -->
     <div class="footer">
         <div class="footer-text">
             © 2026 Paws & Claws Studio. Handcrafted for happy tails.<br>
@@ -115,30 +179,84 @@
         </div>
     </div>
 
-    <div id="successModal" class="modal">
-        <div class="modal-content">
-            <h3><i class="bi bi-heart-pulse-fill" style="color: var(--brand-primary);"></i> Woof! Added!</h3>
-            <p id="modalMessage" style="color: var(--text-muted); font-size: 13px; line-height: 1.5; margin: 10px 0;"></p>
-            <button id="closeModal" class="close-btn">Keep Shopping</button>
+    <!-- Drop-down Top Drawer Menu Overlay System -->
+    <div id="drawerBackdrop" class="drawer-backdrop" onclick="toggleCartDrawer(false)"></div>
+    <div id="cartDrawer" class="modal-drawer">
+        <div class="drawer-header">
+            <h3><i class="bi bi-bag-heart"></i> Your Curated Collection</h3>
+            <span style="font-size: 20px; cursor: pointer; color: var(--text-muted);" onclick="toggleCartDrawer(false)">✕</span>
+        </div>
+        <div id="drawerItems" class="cart-list">
+            <div style="text-align: center; color: var(--text-muted); padding: 20px 0; font-size: 13px;">Your selection panel is currently empty.</div>
+        </div>
+        <div class="checkout-box">
+            <div style="display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 15px; font-size: 15px;">
+                <span>Subtotal:</span>
+                <span id="drawerTotal">$0</span>
+            </div>
+            <button class="cta-btn" style="font-size:13px; padding:12px;">Proceed To Checkout</button>
+            <button class="close-drawer-btn" onclick="toggleCartDrawer(false)">Continue Curating</button>
         </div>
     </div>
 
+    <!-- Advanced Responsive Shopping Bag Logic Controller -->
     <script>
-        let count = 0;
-        const buyBtn = document.getElementById('buyBtn');
-        const cartCount = document.getElementById('cartCount');
-        const modal = document.getElementById('successModal');
-        const closeModal = document.getElementById('closeModal');
-        const modalMessage = document.getElementById('modalMessage');
+        let petCart = {};
+        let petTotalCount = 0;
 
-        buyBtn.addEventListener('click', () => {
-            count++;
-            cartCount.innerText = count;
-            modalMessage.innerText = `Awesome! 1x "Forever Fetch Chew Toy" has been added to your paws. Total items in cart: ${count}.`;
-            modal.style.display = 'flex';
-        });
+        function addToBoutiqueCart(name, price) {
+            petTotalCount++;
+            document.getElementById('cartCount').innerText = petTotalCount;
 
-        closeModal.addEventListener('click', () => { modal.style.display = 'none'; });
+            if (petCart[name]) {
+                petCart[name].qty++;
+            } else {
+                petCart[name] = { price: price, qty: 1 };
+            }
+
+            renderPetCart();
+            toggleCartDrawer(true);
+        }
+
+        function toggleCartDrawer(isOpen) {
+            const drawer = document.getElementById('cartDrawer');
+            const backdrop = document.getElementById('drawerBackdrop');
+            if (isOpen) {
+                drawer.classList.add('active');
+                backdrop.classList.add('active');
+            } else {
+                drawer.classList.remove('active');
+                backdrop.classList.remove('active');
+            }
+        }
+
+        function renderPetCart() {
+            const itemsContainer = document.getElementById('drawerItems');
+            const totalContainer = document.getElementById('drawerTotal');
+            let html = '';
+            let currentTotalSum = 0;
+
+            for (let name in petCart) {
+                let cost = petCart[name].price * petCart[name].qty;
+                currentTotalSum += cost;
+                html += `
+                    <div class="cart-item">
+                        <div>
+                            <strong>${name}</strong><br>
+                            <span style="font-size:12px; color:var(--text-muted);">$${petCart[name].price} × ${petCart[name].qty}</span>
+                        </div>
+                        <span style="font-weight:700;">$${cost}</span>
+                    </div>
+                `;
+            }
+
+            if (html !== '') {
+                itemsContainer.innerHTML = html;
+            } else {
+                itemsContainer.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 20px 0; font-size:13px;">Your selection panel is currently empty.</div>';
+            }
+            totalContainer.innerText = `$${currentTotalSum}`;
+        }
     </script>
 </body>
 </html>
